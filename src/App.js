@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-// import * as BooksAPI from './BooksAPI'
+import React, { useState, useEffect } from 'react'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 import SearchPage from './components/SearchPage'
 import Header from "./components/Header"
@@ -14,18 +14,28 @@ export default function App() {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-     showSearchPage: false
+     showSearchPage: false,
+     books: []
   })
 
+  useEffect(() => {
+    BooksAPI.getAll()
+      .then(books => {
+        setState({
+          books
+        })
+      })
+  }, [])
+
+  console.log(state.books)
+
   function handleGoBack() {
-    console.log("ciao")
     setState({
       showSearchPage: false
     })
   }
 
   function handleSearchButtonClick() {
-    console.log("Hello")
     setState({ 
       showSearchPage: true 
     })
