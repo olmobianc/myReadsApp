@@ -5,7 +5,6 @@ export default function Shelf(props) {
 
     // console.log(props.bookStatus.shelf) why undefined ?
     const bookShelfTitle = (props.bookStatus.map(book => book.shelf))
-    console.log(props)
 
     return(
         <div>
@@ -21,6 +20,8 @@ export default function Shelf(props) {
                             bookTitle={book.title} 
                             bookAuthors={book.authors} 
                             bookImage={book.imageLinks.thumbnail}
+                            shelf={props.shelfChanged}
+                            handleChange={props.handleChange}
                         />
                        )}  
 
