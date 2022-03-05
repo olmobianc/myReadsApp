@@ -1,28 +1,34 @@
 import React from "react"
 import Shelf from "./Shelf"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function Main(props) {
 
     const [state, setState] = useState({
-        shelf: ""
+        shelf: "",
+        currentlyReading: [],
+        wantToRead: [],
+        read: []
     })
 
     const currentlyReading = props.books.filter(book => book.shelf === "currentlyReading")
     const wantToRead = props.books.filter(book => book.shelf === "wantToRead")
     const read = props.books.filter(book => book.shelf === "read")
-    //console.log(currentlyReading)
-    //console.log(wantToRead)
-    //console.log(read)
+
+    useEffect(() => {
+        setState({
+            ...state,
+            currentlyReading: currentlyReading,
+            wantToRead: wantToRead,
+            read: read
+        })
+    }, [state, currentlyReading, wantToRead, read])
 
     function handleChange(event) {
         setState({
             shelf: event.target.value
         })
     }
-
-
-    console.log(state.shelf)
 
     return(
         <div className="list-books-content">
