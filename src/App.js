@@ -27,8 +27,6 @@ export default function App() {
       })
   }, [])
 
-  console.log(state.books)
-
   function handleGoBack() {
     setState({
       showSearchPage: false
@@ -48,7 +46,7 @@ export default function App() {
         ) : (
           <div className="list-books">
             <Header />
-            <Main />
+            <Main books={state.books} />
             <SearchButton onClick={handleSearchButtonClick} />
           </div>
         )}
