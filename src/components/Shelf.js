@@ -3,7 +3,7 @@ import Book from "./Book"
 
 export default function Shelf(props) {
 
-    console.log("shelf", props.bookStatus.shelf) // why this is undefined ?
+    console.log("shelf", props.bookStatus.shelf) // why is this undefined ?
     const bookShelfTitle = (props.bookStatus.map(book => book.shelf))
 
     return(
