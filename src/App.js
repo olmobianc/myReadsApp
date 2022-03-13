@@ -18,6 +18,18 @@ export default function App() {
      books: []
   })
 
+  function changeShelves(book, shelf) {
+    BooksAPI.update(book, shelf)
+        .then(() => {
+          BooksAPI.getAll()
+            .then(books => {
+              setState({
+                books
+              })
+            })
+      })
+  }
+
   useEffect(() => {
     BooksAPI.getAll()
       .then(books => {
@@ -46,7 +58,7 @@ export default function App() {
         ) : (
           <div className="list-books">
             <Header />
-            <Main books={state.books} />
+            <Main books={state.books} handleChange={changeShelves} />
             <SearchButton onClick={handleSearchButtonClick} />
           </div>
         )}

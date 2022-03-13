@@ -3,7 +3,7 @@ import Book from "./Book"
 
 export default function Shelf(props) {
 
-    // console.log(props.bookStatus.shelf) why undefined ?
+    console.log("shelf", props.bookStatus.shelf) // why this is undefined ?
     const bookShelfTitle = (props.bookStatus.map(book => book.shelf))
 
     return(
@@ -14,13 +14,14 @@ export default function Shelf(props) {
                   <div className="bookshelf-books">
                     <ol className="books-grid">
 
-                      {props.bookStatus.map(book => 
+                      {props.bookStatus.map(book =>
                         <Book 
-                            key={book.id} 
+                            key={book.id}
+                            book={book}
                             bookTitle={book.title} 
                             bookAuthors={book.authors} 
                             bookImage={book.imageLinks.thumbnail}
-                            shelf={props.shelfChanged}
+                            shelf={props.bookStatus.shelf}
                             handleChange={props.handleChange}
                         />
                        )}  
