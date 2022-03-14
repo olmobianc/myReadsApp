@@ -2,7 +2,7 @@ import propTypes from "prop-types"
 import React from "react"
 
 export default function SearchPage(props) {
-    return(
+    return (
         <div className="search-books">
             <div className="search-books-bar">
               <button className="close-search" onClick={props.onClick}>Close</button>

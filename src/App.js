@@ -40,14 +40,20 @@ export default function App() {
   }, [])
 
   function handleGoBack() {
-    setState({
-      showSearchPage: false
+    setState(prevState => {
+      return {
+        ...prevState,
+        showSearchPage: false
+      }
     })
   }
 
   function handleSearchButtonClick() {
-    setState({ 
-      showSearchPage: true 
+    setState(prevState => {
+      return {
+        ...prevState,
+        showSearchPage: true 
+      } 
     })
   }
 
