@@ -18,7 +18,7 @@ export default function SearchPage(props) {
           query: userInput
         }
       })
-      BooksAPI.search(state.query)
+      BooksAPI.search(userInput)
         .then((result) => {
           setState(prevState => {
             return {
@@ -26,7 +26,6 @@ export default function SearchPage(props) {
               result
             }
           })
-          console.log(result) //first character is undefined here, why ?? (next characters are fine instead)
         })
     }
 
@@ -51,22 +50,23 @@ export default function SearchPage(props) {
 
               {/* creating dinamically the list of books based on user input search */}
               <ol className="books-grid">
-                  <li>
-                    {state.result.map(book =>
+                    {Array.isArray(state.result) ? state.result.map(book =>
                         <Book 
                           key={book.id}
                           book={book}
                           bookTitle={book.title} 
                           bookAuthors={book.authors} 
                           bookImage={book.imageLinks.thumbnail}
+                          shelf="none"
+                          handleChange={props.handleChange}
                         />
-                    )}
-                  </li>
+                    ) : "The terms inserted did not bring to any result, please try again"}
               </ol>
 
             </div>
             <div className="search-terms">
-              <h4>You can search by typing the any of the following words:</h4>
+              <hr></hr>
+              <h4>You can search by typing any of the following terms:</h4>
               'Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 
               'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 
               'Christie', 'Classics', 'Comics', 'Cook', 'Cricket', 'Cycling', 'Desai', 'Design', 

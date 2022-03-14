@@ -2,8 +2,6 @@ import React from "react"
 
 export default function Book(props) {
 
-  console.log("value", props.shelf)
-
     return(
         <div>
             <li>
@@ -12,7 +10,7 @@ export default function Book(props) {
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${props.bookImage})` }}></div>
                     <div className="book-shelf-changer">
                       <select 
-                          value={props.shelf[0]} 
+                          value={props.shelf !== "none" ? props.shelf[0] : "none"} 
                           onChange={(event) => props.handleChange(props.book, event.target.value)}>
                         <option value="move" disabled>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>

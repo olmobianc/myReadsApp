@@ -60,7 +60,7 @@ export default function App() {
     return (
       <div className="app">
         {state.showSearchPage ? (
-          <SearchPage onClick={handleGoBack}/>
+          <SearchPage onClick={handleGoBack} handleChange={changeShelves} />
         ) : (
           <div className="list-books">
             <Header />

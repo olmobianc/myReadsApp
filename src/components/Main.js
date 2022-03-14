@@ -7,8 +7,6 @@ export default function Main(props) {
     const wantToRead = props.books.filter(book => book.shelf === "wantToRead")
     const read = props.books.filter(book => book.shelf === "read")
 
-    console.log(currentlyReading)
-
     return(
         <div className="list-books-content">
               <div>
