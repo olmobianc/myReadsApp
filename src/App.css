@@ -198,3 +198,12 @@ button:active {
   text-align: center;
   font-size: 0.8em;
 }
+
+.search-terms {
+  padding: 20px;
+  font-size: 14px;
+  text-align: center;
+  margin: auto;
+  max-width: 900px;
+  color: #999;
+}
